@@ -1,12 +1,10 @@
 #include <iostream>
 #include "LinkedList.h"
 #include "LinkedList.cpp"
-#include "DoublyLinkedList.h"
-#include "DoublyLinkedList.cpp"
 
 int main(int argc, const char * argv[]) {
 
-    cout<<"\n"<< "----------SINGLE LINKED LIST----------" << "\n";
+    cout<<"\n"<< "----------FORWARD LINKED LIST----------" << "\n";
     CS::LinkedList<int> lista;
 
     //Insertion
@@ -27,9 +25,22 @@ int main(int argc, const char * argv[]) {
     //Deletion
     lista.pop_front();
     lista.pop_back();
+    lista.erase(3);
 
     //Iterator ++
     showLinkedList(lista);
+
+    //Sort
+    lista.sort();
+
+    //Print
+    cout<<lista<< "\n";
+
+    //Reverse
+    lista.reverse();
+
+    //Print
+    cout<<lista<< "\n";
 
     //Searching
     lista.search(3);
@@ -40,44 +51,7 @@ int main(int argc, const char * argv[]) {
     //Minimun
     lista.get_min();
 
-    cout<<"\n"<< "----------DOUBLY LINKED LIST----------" << "\n";
-
-    CS::DoublyLinkedList<int> Doblelista;
-
-    //Insertion
-    Doblelista.push_front(32);
-    Doblelista.push_front(67);
-    Doblelista.push_front(23);
-    Doblelista.push_back(57);
-    Doblelista.push_back(51);
-    Doblelista.push_back(64);
-    Doblelista.insert(2,54);
-
-    //Print
-    cout<<Doblelista<<"\n";
-
-    //Deletion
-    Doblelista.pop_front();
-    Doblelista.pop_back();
-
-    //Iterator ++
-    showDoublyLinkedList(Doblelista);
-
-    //Iterator -- (Inverso)
-    showDoublyLinkedList_reverse(Doblelista);
-
-    //Searching
-    Doblelista.search(2);
-
-    //Maximun
-    Doblelista.get_max();
-
-    //Minimun
-    Doblelista.get_min();
-
-    cout<<"\n"<< "----------CIRCULAR LINKED LIST----------" << "\n";
-
-    cout<<"\n"<< "----------DOUBLY CIRCULAR LINKED LIST----------" << "\n";
+    lista.clear();
 
     return 0;
 }

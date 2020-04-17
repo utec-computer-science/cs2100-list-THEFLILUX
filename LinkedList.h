@@ -6,10 +6,7 @@
 #define CS2100_LIST_THEFLILUX_LINKEDLIST_H
 
 #include <iostream>
-#include "Queue.h"
-
-using std::cout;
-using std::ostream;
+using namespace  std;
 
 namespace CS{
 
@@ -51,44 +48,18 @@ namespace CS{
     class LinkedList {
     private:
         ListNode<T>* head;
+        ListNode<T>* tail;
         int maxElem;
     public:
         typedef iterator2<T> iterator;
         LinkedList();
+        ~LinkedList()=default;
 
         //Maximun
-        void get_max(){
-            if(is_empty()){
-                cout << "El stack esta vacio"<< "\n";
-            }
-            else{
-                ListNode<T> * temp = head;
-                while(temp != nullptr){
-                    if(temp->data > maxElem){
-                        maxElem = temp->data;
-                    }
-                    temp = temp->next;
-                }
-                cout << "El elemento maximo es: "<< maxElem << "\n";
-            }
-        }
+        void get_max();
 
         //Minimun
-        void get_min(){
-            if(is_empty()){
-                cout << "El stack esta vacio"<< "\n";
-            }
-            else{
-                ListNode<T> * temp = head;
-                while(temp != nullptr){
-                    if(temp->data < maxElem){
-                        maxElem = temp->data;
-                    }
-                    temp = temp->next;
-                }
-                cout << "El elemento minimo es: "<< maxElem << "\n";
-            }
-        }
+        void get_min();
 
         int size();
         bool is_empty();
@@ -97,7 +68,11 @@ namespace CS{
         void insert(const int &position, const T &data);
         void pop_front();
         void pop_back();
-        void pop(const int &position);
+        void erase(const int &position);
+        void remove(const T &element);
+        void sort();
+        void reverse();
+        void clear();
 
         //Searching
         void search(const int & position);
@@ -113,6 +88,7 @@ namespace CS{
         //Printing
         friend ostream& operator << (ostream &os, const LinkedList & linkedList){
             ListNode<T> * pointer = linkedList.head;
+            cout<<"\n";
             while(pointer != nullptr){
                 os<<pointer->data << " ";
                 pointer = pointer->next;
